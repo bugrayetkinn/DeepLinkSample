@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.yetkin.deeplinkallscenario.ui.fragment.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <argument
+            android:name="userName"
+            android:defaultValue="empty user name"
+            app:argType="string"
+            app:nullable="true" />
+        <!-- todo
+         home deep link-->
+        <deepLink app:uri="example.com/login/{userName}" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.yetkin.deeplinkallscenario.ui.fragment.ProfileFragment"
+        android:label="ProfileFragment">
+
+        <argument
+            android:name="accountId"
+            android:defaultValue="0"
+            app:argType="integer"
+            app:nullable="false" />
+        <!-- todo
+          profile deep link-->
+        <deepLink app:uri="example.com/profile/{accountId}" />
+    </fragment>
+</navigation>
