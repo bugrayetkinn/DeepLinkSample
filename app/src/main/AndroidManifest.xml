@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yetkin.deeplinkallscenario">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -39,6 +41,10 @@
                     android:host="www.example.com"
                     android:pathPrefix="/bugra"
                     android:scheme="http" />
+
+                <data
+                    android:host="deeplinkallscenario.page.link"
+                    android:scheme="https" />
             </intent-filter>
             <!-- todo
              nav graph added -->

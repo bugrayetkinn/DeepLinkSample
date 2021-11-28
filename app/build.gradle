@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -38,7 +39,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding true
     }
 }
@@ -54,6 +55,11 @@ dependencies {
     // NAVIGATION
     implementation "androidx.navigation:navigation-fragment-ktx:2.4.0-beta02"
     implementation "androidx.navigation:navigation-ui-ktx:2.4.0-beta02"
+
+    // FIREBASE
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
 
     // TEST
     testImplementation 'junit:junit:4.13.2'

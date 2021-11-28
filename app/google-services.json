@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "433348341432",
+    "project_id": "deep-link-sample",
+    "storage_bucket": "deep-link-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433348341432:android:fd45e8ba13a94a197c8e4d",
+        "android_client_info": {
+          "package_name": "com.yetkin.deeplinkallscenario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433348341432-79jp5anrf0of4jqo4cjf6k82fk0dm3ck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSGd-VoX5KippasQHIrj22gxIPKx4aCuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433348341432-79jp5anrf0of4jqo4cjf6k82fk0dm3ck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

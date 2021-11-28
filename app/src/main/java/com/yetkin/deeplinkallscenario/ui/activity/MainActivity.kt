@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.google.firebase.dynamiclinks.ktx.dynamicLinks
+import com.google.firebase.ktx.Firebase
 import com.yetkin.deeplinkallscenario.R
 import com.yetkin.deeplinkallscenario.databinding.ActivityMainBinding
 import com.yetkin.deeplinkallscenario.utils.Constants
@@ -31,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.firebaseUrl = "empty firebase dynamic link"
+        handleDeepLinkFromFirebase(intent)
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_container)
         handleDeepLink()
     }
@@ -46,5 +50,30 @@ class MainActivity : AppCompatActivity() {
         Log.e("url id parameter", idParameter ?: "")
         val isOpenedUrl = intentData?.toString() ?: "Not Open Url (Activity)"
         binding.openUrl = isOpenedUrl
+    }
+
+    private fun handleDeepLinkFromFirebase(intent: Intent?) {
+        Firebase.dynamicLinks.getDynamicLink(intent)
+            .addOnSuccessListener { dynamicData ->
+                if (dynamicData != null) {
+                    val result = dynamicData.link?.toString()
+
+                    /**
+                     * todo
+                     * get specific parameter
+                     */
+                    val campaignId = dynamicData.link?.getQueryParameter("campaignId")
+                    dynamicData.apply {
+                        Log.e("click date", "$clickTimestamp")
+                        Log.e("minimum app version", "$minimumAppVersion")
+                        Log.e("redirect uri", "${(redirectUrl)}")
+                        Log.e("extensions", "${(extensions)}")
+                    }
+                    binding.firebaseUrl = result
+                }
+            }
+            .addOnFailureListener {
+                Log.e("firebase link exception", it.message, it)
+            }
     }
 }
